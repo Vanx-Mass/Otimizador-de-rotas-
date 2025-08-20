@@ -30,7 +30,9 @@ otimizador-de-rotas/
 2. Rode o programa principal:
    python main.py
 
-3. 🔹 No Google Colab
+3. Siga o menu interativo para escolher entre BFS e Dijkstra.
+
+🔹No Google Colab
 Abra o arquivo otimizador_de_rotas.ipynb.
 Execute as células para rodar o projeto diretamente no navegador.
 
