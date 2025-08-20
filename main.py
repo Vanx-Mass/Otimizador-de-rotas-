@@ -6,26 +6,28 @@ def menu():
     print("1. Menor número de conexões (BFS)")
     print("2. Menor distância total (Dijkstra)")
     print("3. Sair")
-    return input("Escolha uma opção: ")
+    return input("Escolha uma opção: ").strip()
 
 def main():
     while True:
         opcao = menu()
 
         if opcao == "3":
+            print("Saindo...")
             break
 
-        origem = input("Cidade origem: ").strip()
-        destino = input("Cidade destino: ").strip()
+        origem = input("Cidade origem: ").strip().title()
+        destino = input("Cidade destino: ").strip().title()
 
         if origem not in CIDADES or destino not in CIDADES:
             print("Cidade não encontrada!")
+            print("Cidades disponíveis:", ", ".join(CIDADES.keys()))
             continue
 
         if opcao == "1":
-            caminho = bfs(CIDADES, origem, destino)
+            caminho, conexoes = bfs(CIDADES, origem, destino)
             if caminho:
-                print(f"Rota (BFS): {' -> '.join(caminho)}")
+                print(f"Rota (BFS): {' -> '.join(caminho)} | Conexões: {conexoes}")
             else:
                 print("Sem rota disponível!")
 
@@ -36,6 +38,9 @@ def main():
                 print(f"Distância total: {distancia} km")
             else:
                 print("Sem rota disponível!")
+
+        else:
+            print("Opção inválida! Escolha 1, 2 ou 3.")
 
 if __name__ == "__main__":
     main()
