@@ -11,7 +11,7 @@ def bfs(grafo, origem, destino):
         destino (str): Cidade de destino.
 
     Returns:
-        list: Caminho como lista de cidades, ou None se não houver caminho.
+        tuple: (caminho, número de conexões) ou (None, 0) se não houver caminho.
     """
     fila = deque([(origem, [origem])])
     visitados = set()
@@ -20,19 +20,19 @@ def bfs(grafo, origem, destino):
         cidade, caminho = fila.popleft()
 
         if cidade == destino:
-            return caminho
+            return caminho, len(caminho) - 1
 
         if cidade not in visitados:
             visitados.add(cidade)
             for vizinho in grafo.get(cidade, {}):
                 fila.append((vizinho, caminho + [vizinho]))
 
-    return None
+    return None, 0
 
 
 def dijkstra(grafo, origem, destino):
     """
-    Encontra o caminho de menor distância entre duas cidades usando o algoritmo de Dijkstra.
+    Encontra o caminho de menor distância entre duas cidades usando Dijkstra.
 
     Args:
         grafo (dict): Dicionário representando o grafo com pesos.
