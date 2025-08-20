@@ -2,8 +2,18 @@ from collections import deque
 import heapq
 
 def bfs(grafo, origem, destino):
-    fila = deque()
-    fila.append((origem, [origem]))
+    """
+    Encontra o caminho com menor número de conexões entre duas cidades.
+
+    Args:
+        grafo (dict): Dicionário representando o grafo.
+        origem (str): Cidade de partida.
+        destino (str): Cidade de destino.
+
+    Returns:
+        list: Caminho como lista de cidades, ou None se não houver caminho.
+    """
+    fila = deque([(origem, [origem])])
     visitados = set()
 
     while fila:
@@ -12,17 +22,27 @@ def bfs(grafo, origem, destino):
         if cidade == destino:
             return caminho
 
-        for vizinho in grafo.get(cidade, {}):
-            if vizinho not in visitados:
-                visitados.add(vizinho)
+        if cidade not in visitados:
+            visitados.add(cidade)
+            for vizinho in grafo.get(cidade, {}):
                 fila.append((vizinho, caminho + [vizinho]))
 
     return None
 
 
 def dijkstra(grafo, origem, destino):
-    fila = []
-    heapq.heappush(fila, (0, origem, [origem]))
+    """
+    Encontra o caminho de menor distância entre duas cidades usando o algoritmo de Dijkstra.
+
+    Args:
+        grafo (dict): Dicionário representando o grafo com pesos.
+        origem (str): Cidade de partida.
+        destino (str): Cidade de destino.
+
+    Returns:
+        tuple: (caminho, distância total) ou (None, inf) se não houver caminho.
+    """
+    fila = [(0, origem, [origem])]
     visitados = set()
 
     while fila:
