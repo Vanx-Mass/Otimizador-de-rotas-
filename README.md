@@ -47,3 +47,34 @@ Cidade destino: Brasília
 
 Rota (Dijkstra): São Paulo -> Belo Horizonte -> Brasília
 Distância total: 1302 km
+
+📊 Complexidade dos Algoritmos
+
+BFS (Breadth-First Search)
+
+Objetivo: Encontrar o caminho com o menor número de conexões entre duas cidades.
+
+Complexidade de tempo: O (V + E)
+
+V = número de vértices (cidades)
+
+E = número de arestas (conexões entre cidades)
+
+Complexidade de espaço: O(V)
+A fila e o conjunto de visitados podem armazenar até todos os vértices.
+
+BFS explora todos os vizinhos de um nó antes de passar para o próximo nível, garantindo que o primeiro caminho encontrado seja o de menor número de conexões.
+
+Dijkstra
+
+Objetivo: Encontrar o caminho de menor distância total entre duas cidades.
+
+Complexidade de tempo: O ((V + E) log V)
+
+O uso de uma fila de prioridade (heap) garante que a extração do menor custo seja eficiente.
+
+Complexidade de espaço: O (V + E)
+
+Armazena todos os vizinhos e os caminhos explorados.
+
+Dijkstra garante que, ao visitar um nó, já encontramos o caminho de menor custo até ele. É eficiente para grafos ponderados com pesos não negativos.
