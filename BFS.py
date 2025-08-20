@@ -1,4 +1,4 @@
-# Dia 17 - Implementação BFS e Dijkstra com dados mockados
+#Implementação BFS e Dijkstra com dados mockados
 
 from collections import deque
 import heapq
